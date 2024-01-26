@@ -12,9 +12,9 @@ namespace s21 {
     public:
         ThreadSafeQ() = default;
         ThreadSafeQ(const ThreadSafeQ&) = delete;
-        ThreadSafeQ(ThreadSafeQ&&) = default;
+        ThreadSafeQ(ThreadSafeQ&&)  noexcept = default;
         ThreadSafeQ& operator=(const ThreadSafeQ&) = delete;
-        ThreadSafeQ& operator=(ThreadSafeQ&&) = default;
+        ThreadSafeQ& operator=(ThreadSafeQ&&)  noexcept = default;
         ~ThreadSafeQ() { Clear(); }
         /// returns the first element in the queue
         const T& Front() const noexcept {
