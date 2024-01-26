@@ -9,6 +9,7 @@
 
 namespace s21 {
     struct Timestamper {
+        ///Create timestamp with format [%Y-%m-%d %H:%M:%S.%3f] based on current time
         static std::string GetTimestamp(){
             auto now = std::chrono::system_clock::now();
             auto time = std::chrono::system_clock::to_time_t(now);
