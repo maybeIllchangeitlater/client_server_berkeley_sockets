@@ -27,28 +27,28 @@ namespace s21 {
               Close();
           }
 
-          void Socket::Bind(const char * address, unsigned short port) {
+          void Socket::Bind(unsigned short port, const char * address) {
               sockaddr_in addr = InitializeSocketAddress(address, port);
               if(bind(fd_, (sockaddr*)&addr, sizeof(addr)) == -1){
                   throw std::runtime_error("Socket constructor: Failed to bind socket");
               }
           }
 
-          void Socket::Bind(unsigned short port) {
-              Bind("127.0.0.1", port);
+          size_t Socket::Receive(char *buffer, size_t buffer_length) {
+              return read(fd_, buffer, buffer_length);
           }
 
-//          void Socket::Connect(const char *address, unsigned short port) {
-//              sockaddr_in server_address = InitializeSocketAddress(address, port);
-//              if (connect(fd_, (struct sockaddr*)&server_address, sizeof(server_address)) == -1) {
-//                  throw std::runtime_error("Socket connect: Failed to connect to server");
-//              }
-//          }
+          size_t Socket::Send(int file_descriptor, const char *data, size_t data_length) {
+              return send(file_descriptor, data, data_length, 0);
+          }
+
           void Socket::Close() {
               if(fd_ != -1) {
                   close(fd_);
+                  fd_ = -1;
               }
           }
+
           sockaddr_in Socket::InitializeSocketAddress(const char *address, unsigned short port) {
               sockaddr_in addr;
               std::memset(&addr, 0, sizeof(addr));
