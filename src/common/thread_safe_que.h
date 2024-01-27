@@ -64,10 +64,10 @@ class ThreadSafeQ {
   }
 
  private:
-  std::deque<T> message_que_;
-  mutable std::mutex q_mutex_;
   std::condition_variable cv_;
+  mutable std::mutex q_mutex_;
   std::mutex cv_lock_;
+  std::deque<T> message_que_;
 };
 }  // namespace s21
 

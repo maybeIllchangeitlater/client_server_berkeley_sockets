@@ -20,13 +20,15 @@ class Server {
  private:
   void HandlePing(std::shared_ptr<Socket> connection);
   void LogFromQue();
+  void InitializeAcceptThread();
+  void InitializeLoggingThread();
 
  private:
-  Acceptor acceptor_;
+  std::ofstream log_file_;
   s21::ThreadSafeQ<std::string> msg_que_;
   std::thread accept_thread_;
   std::thread write_to_log_thread_;
-  std::ofstream log_file_;
+  Acceptor acceptor_;
 };
 }  // namespace ip
 }  // namespace tcp
