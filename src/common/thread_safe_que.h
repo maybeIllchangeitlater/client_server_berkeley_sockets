@@ -33,8 +33,11 @@ namespace s21 {
         /// adds an element to the back of the queue
         template <typename... Args>
         void EmplaceBack(Args&&... args) {
-            lock_guard lock(q_mutex_);
-            message_que_.emplace_back(std::forward<Args>(args)...);
+            {
+                lock_guard lock(q_mutex_);
+                message_que_.emplace_back(std::forward<Args>(args)...);
+            }
+            cv_.notify_one();
         }
         /// remove target value
         void Erase(T& value) {
@@ -44,7 +47,7 @@ namespace s21 {
                     message_que_.end());
         }
 
-        bool Empty() {
+        bool Empty() const {
             lock_guard lock(q_mutex_);
             return message_que_.empty();
         }
@@ -55,11 +58,8 @@ namespace s21 {
         }
 
         void Wait() {
-            while (Empty())
-            {
-                std::unique_lock<std::mutex> ul(cv_lock_);
-                cv_.wait(ul);
-            }
+            std::unique_lock<std::mutex> ul(cv_lock_);
+            cv_.wait(ul, [this](){ return !Empty(); });
         }
 
     private:

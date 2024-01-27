@@ -9,16 +9,7 @@ namespace s21 {
                   throw std::runtime_error("Socket constructor: Failed to create socket");
               }
           }
-          Socket::Socket(Socket &&other) noexcept {
-              fd_ = other.fd_;
-              other.fd_ = -1;
-          }
-          Socket& Socket::operator=(Socket &&other) noexcept{
-              Close();
-              fd_ = other.fd_;
-              other.fd_ = -1;
-              return *this;
-          }
+
           Socket::Socket(int fd) {
               fd_ = fd;
           }
