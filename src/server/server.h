@@ -14,16 +14,16 @@ namespace s21 {
         namespace ip {
             class Server {
             public:
-                using connections_iterator = std::list<std::shared_ptr<Socket>>::iterator;
                 explicit Server(unsigned short port);
                 ~Server();
             private:
-                void HandlePing(connections_iterator connection);
+                void HandlePing(std::shared_ptr<Socket> connection);
+                void LogFromQue();
             private:
                 Acceptor acceptor_;
-                std::list<std::shared_ptr<Socket>> connections_;
-                s21::ThreadSafeQ<std::pair<connections_iterator, std::string>> msg_que_;
+                s21::ThreadSafeQ<std::string> msg_que_;
                 std::thread accept_thread_;
+                std::thread write_to_log_thread_;
                 std::ofstream log_file_;
             };
         } //ip
