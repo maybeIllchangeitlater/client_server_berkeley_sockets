@@ -15,5 +15,5 @@ add_executable(server_run
         ../common/thread_safe_que.h)
 
 set_target_properties(server_run PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/..
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../..
         )

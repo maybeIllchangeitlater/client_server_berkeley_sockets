@@ -11,5 +11,5 @@ add_executable(client_run
         client.h)
 
 set_target_properties(client_run PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/..
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../..
         )
