@@ -1,13 +1,13 @@
-all: clean server client
+all: clean tcp_server tcp_client
 
 
-client:
-	cd src && cd client && mkdir build && cd build && cmake .. && make && cd ../../..
+tcp_client:
+	cd src && cd tcpip && cd client && mkdir build && cd build && cmake .. && make && cd ../../../..
 
-server:
-	cd src && cd server && mkdir build && cd build && cmake .. && make && cd ../../..
+tcp_server:
+	cd src && cd tcpip && cd server && mkdir build && cd build && cmake .. && make && cd ../../../..
 
 clean:
-	rm -rf src/client/build src/server/build client_run server_run
+	rm -rf src/tcpip/client/build src/tcpip/server/build tcp_client_run tcp_server_run
 
-.PHONY: client server clean	
+.PHONY: tcp_client tcp_server clean	
