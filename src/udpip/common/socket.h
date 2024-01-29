@@ -1,5 +1,5 @@
-#ifndef CLIENT_SERVER_BERKELEY_UDPIP_SOCKETS_COMMON_SOCKET_H_
-#define CLIENT_SERVER_BERKELEY_UDPIP_SOCKETS_COMMON_SOCKET_H_
+#ifndef CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_COMMON_SOCKET_H
+#define CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_COMMON_SOCKET_H
 
 #include <arpa/inet.h>   //inet_pton (converts addresses from text to binary)
 #include <netinet/in.h>  //for sockaddr_in
@@ -64,4 +64,4 @@ class Socket {
 }  // namespace tcp
 }  // namespace s21
 
-#endif  // CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_COMMON_SOCKET_H_
+#endif  // CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_COMMON_SOCKET_H

@@ -1,5 +1,5 @@
-#ifndef UDPIP_CLIENT_H
-#define UDPIP_CLIENT_H
+#ifndef CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_CLIENT_CLIENT_H
+#define CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_CLIENT_CLIENT_H
 
 #include <chrono>
 #include <thread>
@@ -18,8 +18,8 @@ namespace s21 {
                 std::shared_ptr<Socket> sock_;
                 unsigned short host_port_;
             };
-        }
-    }
-}
+        } //ip
+    } //udp
+} //s21
 
-#endif //UDPIP_CLIENT_H
+#endif //CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_CLIENT_CLIENT_H
