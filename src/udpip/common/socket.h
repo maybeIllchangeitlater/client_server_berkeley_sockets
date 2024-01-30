@@ -32,9 +32,10 @@ class Socket {
   void Bind(unsigned short port = 0, const char *address = "127.0.0.1");
   /// Reads into buffer of max length buffer_length. Returns amount of bytes
   /// read
-  size_t  Receive(char *buffer, size_t buffer_length);
+  size_t Receive(char *buffer, size_t buffer_length);
   /// Sends data to socket
-  void Send(unsigned short port, const char *data, size_t data_length, const char * address = "127.0.0.1");
+  void Send(unsigned short port, const char *data, size_t data_length,
+            const char *address = "127.0.0.1");
 
   int GetFd() { return fd_; }
 
@@ -61,7 +62,7 @@ class Socket {
 };
 
 }  // namespace ip
-}  // namespace tcp
+}  // namespace udp
 }  // namespace s21
 
 #endif  // CLIENT_SERVER_BERKELEY_SOCKETS_UDPIP_COMMON_SOCKET_H
