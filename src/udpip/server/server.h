@@ -5,6 +5,7 @@
 #include <thread>
 #include <memory>
 #include <string>
+#include <list>
 #include "../common/socket.h"
 #include "../../common/timestamper.h"
 #include "../../common/thread_safe_que.h"
@@ -37,6 +38,7 @@ namespace s21 {
                 std::mutex cv_mutex_;
                 std::list<std::thread> listen_threads_;
                 std::thread handle_thread_;
+                std::thread thread_killer_thread_;
                 std::shared_ptr<Socket> sock_;
             };
         } //ip

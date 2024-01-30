@@ -9,9 +9,12 @@ namespace s21{
                 CreateNewListenThread();
                 handle_thread_ = std::thread([this](){ while(true){HandleNewMessage();}});
                 handle_thread_.detach();
-                while (true) {
-                    HandleThreadFinished();
-                }
+                thread_killer_thread_ = std::thread([this]() {
+                    while (true) {
+                        HandleThreadFinished();
+                    }
+                });
+                thread_killer_thread_.detach();
             }
 
             Server::~Server() {
@@ -38,8 +41,9 @@ namespace s21{
                         }else {
                             ++pings_per_second;
                         }
-                        if(pings_per_second >= 10){
+                        if(pings_per_second >= 20){
                             CreateNewListenThread();
+                            pings_per_second = 0;
                         }
                     }
                 }

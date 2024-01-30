@@ -5,8 +5,8 @@
 #include <thread>
 
 #include "../common/socket.h"
-#include "../common/thread_safe_que.h"
-#include "../common/timestamper.h"
+#include "../../common/thread_safe_que.h"
+#include "../../common/timestamper.h"
 #include "acceptor.h"
 
 namespace s21 {
