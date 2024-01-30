@@ -48,7 +48,7 @@ void Server::Listen() {
       } else {
         ++pings_per_second;
       }
-      if (pings_per_second >= 20) {
+      if (pings_per_second >= 10) {
         CreateNewListenThread();
         pings_per_second = 0;
       }
