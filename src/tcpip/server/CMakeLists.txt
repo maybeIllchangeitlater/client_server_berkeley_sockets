@@ -3,7 +3,7 @@ project(server)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(server_run
+add_executable(tcp_server_run
         server_main.cpp
         ../common/socket.cpp
         ../common/socket.h
@@ -11,9 +11,9 @@ add_executable(server_run
         acceptor.h
         server.cpp
         server.h
-        ../common/timestamper.h
-        ../common/thread_safe_que.h)
+        ../../common/timestamper.h
+        ../../common/thread_safe_que.h)
 
-set_target_properties(server_run PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../..
+set_target_properties(tcp_server_run PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../..
         )

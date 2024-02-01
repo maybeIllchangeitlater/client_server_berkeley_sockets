@@ -1,12 +1,12 @@
-#ifndef CLIENT_SERVER_BERKELEY_SOCKETS_SERVER_SERVER_H
-#define CLIENT_SERVER_BERKELEY_SOCKETS_SERVER_SERVER_H
+#ifndef CLIENT_SERVER_BERKELEY_SOCKETS_TCPIP_SERVER_SERVER_H
+#define CLIENT_SERVER_BERKELEY_SOCKETS_TCPIP_SERVER_SERVER_H
 
 #include <fstream>
 #include <thread>
 
 #include "../common/socket.h"
-#include "../common/thread_safe_que.h"
-#include "../common/timestamper.h"
+#include "../../common/thread_safe_que.h"
+#include "../../common/timestamper.h"
 #include "acceptor.h"
 
 namespace s21 {
@@ -34,4 +34,4 @@ class Server {
 }  // namespace tcp
 }  // namespace s21
 
-#endif  // CLIENT_SERVER_BERKELEY_SOCKETS_SERVER_SERVER_H
+#endif  // CLIENT_SERVER_BERKELEY_SOCKETS_TCPIP_SERVER_SERVER_H
