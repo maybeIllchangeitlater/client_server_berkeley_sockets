@@ -6,7 +6,11 @@ namespace s21 {
 namespace udp {
 namespace ip {
 Server::Server(unsigned short port)
-    : log_file_("log.txt"), sock_(Socket::CreateSocket()) {
+    : log_file_("log.txt", std::ofstream::out | std::ofstream::app),
+      sock_(Socket::CreateSocket()) {
+  if (!log_file_.is_open()) {
+    throw std::runtime_error("Error: Failed to open log file.");
+  }
   sock_->Bind(port);
   CreateNewListenThread();
   handle_thread_ = std::thread([this]() {
@@ -71,6 +75,7 @@ bool Server::OnlyOneListenThread() {
 
 void Server::HandleNewMessage() {
   msg_que_.Wait();
+  //  std::cout << msg_que_.PopFront() << std::endl;
   log_file_ << msg_que_.PopFront() << std::endl;
 }
 

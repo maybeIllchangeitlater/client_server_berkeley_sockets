@@ -1,5 +1,7 @@
 #include "client.h"
 
+#include <iostream>
+
 namespace s21 {
 namespace udp {
 namespace ip {
