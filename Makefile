@@ -20,6 +20,6 @@ clean:
 
 docker_tcp_server:
 	sudo docker build --build-arg PORT=$(SERVER_PORT) -t berkeley_tcp_server .
-	docker run -it -p $(SERVER_PORT):$(SERVER_PORT) -v $(PWD):/usr/src/app --name berksock_serv berkeley_tcp_server
+	docker run -it -p $(SERVER_PORT):$(SERVER_PORT) -e PORT=$(SERVER_PORT) -v $(PWD):/usr/src/app --name berksock_serv berkeley_tcp_server
 	
 .PHONY: tcp_client tcp_server udp_client udp_server clean docker_tcp_server	
